@@ -19,7 +19,7 @@
 
 <link href="/css/style.css?v=1.0.1" rel="stylesheet">
 
-<link href="/css/hl_theme/sublime.css?v=1.0.1" rel="stylesheet">
+<link href="/css/hl_theme/atom-dark.css?v=1.0.1" rel="stylesheet">
 
 <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -129,11 +129,19 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(9)</small></div></li>
+    <li><div class="all active">全部文章<small>(11)</small></div></li>
     
         
             
-            <li><div data-rel="Vue">Vue<small>(1)</small></div>
+            <li><div data-rel="ES6">ES6<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Vue">Vue<small>(2)</small></div>
                 
             </li>
             
@@ -175,8 +183,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="9">
-<input type="hidden" id="yelog_site_word_count" value="3.5k">
+<input type="hidden" id="yelog_site_posts_number" value="11">
+<input type="hidden" id="yelog_site_word_count" value="5.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -212,6 +220,18 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a class="color4">ES6</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">let</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">const</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color4">Vue</a>
     </li>
     
@@ -244,6 +264,14 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="ES6 "
+           href="/2019/11/20/ES6-let-const/"
+           data-tag="ES6,let,const"
+           data-author="" >
+            <span class="post-title" title="ES6-let,const">ES6-let,const</span>
+            <span class="post-date" title="2019-11-20 17:49:29">2019/11/20</span>
+        </a>
         
         <a  class="Vue "
            href="/2019/11/18/Vue%E5%88%9D%E8%AF%86/"
@@ -307,6 +335,14 @@
            data-author="" >
             <span class="post-title" title="yarn 与 npm 区别">yarn 与 npm 区别</span>
             <span class="post-date" title="2019-11-15 16:51:10">2019/11/15</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/11/20/vue%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue基础（一）">Vue基础（一）</span>
+            <span class="post-date" title="2019-11-20 11:17:30">2019/11/20</span>
         </a>
         
         <a  class="工具 "
@@ -456,7 +492,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#Vue','#browser','#CSS','#node.js','#vscode','#webpack',],
+            'data': ['#ES6','#let','#const','#Vue','#browser','#CSS','#node.js','#vscode','#webpack',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
@@ -626,6 +662,15 @@
 
 
     /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
     
 
     /*文章列表背景图*/
