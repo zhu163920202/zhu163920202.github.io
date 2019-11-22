@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Vue-组件化开发</title>
+      <link href="/2019/11/22/Vue-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/"/>
+      <url>/2019/11/22/Vue-%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue基础（二）</title>
+      <link href="/2019/11/21/Vue%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+      <url>/2019/11/21/Vue%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a><code>v-for</code></h4><ol><li><p>遍历数组</p><p>支持可选的第二个参数为当前项的索引</p></li><li><p>遍历对象</p><p>只有一个参数时获取的为<code>value</code>, 也可以提供第二个参数为键名，参数三为索引</p><p><code>v-for=&quot;(value, key, index) in object&quot;</code></p></li><li><p><code>key</code></p><p><code>v-for</code>更新已经渲染过的元素列表时，默认用‘就地复用’策略；如果数据项的顺序被改变，<code>Vue</code>不会移动<code>DOM</code>元素来匹配数据项的顺序，而是简单复用此处每个元素，并且确保它在特定索引下显示已经被渲染过的每个元素；</p><p>在对应的元素上添加<code>key</code>属性，可以高效的更新虚拟<code>DOM</code></p></li></ol><h4 id="数组更新检测"><a href="#数组更新检测" class="headerlink" title="数组更新检测"></a>数组更新检测</h4><ul><li>因为<code>Vue</code>是响应式的，所以数据发生变化时，<code>Vue</code>会自动检测数据变化，视图会发生对应的更新</li><li><code>Vue</code>中观察数组的变异方法（会改变原始数组） <code>push pop shift unshift splice sort reverse</code></li><li>Vue内部提供的修改数组的方法set <code>Vue.set(要修改的对象，索引值，修改后的值)</code></li><li>非变异方法：不会改变原始数组，但会返回一个新数组 <code>filter concat slice</code></li><li>注：Vue不能检测以下变动的数组：<ul><li>利用索引来设置一个项时</li><li>修改数组的长度时</li></ul></li></ul><h3 id="表单输入绑定v-model"><a href="#表单输入绑定v-model" class="headerlink" title="表单输入绑定v-model"></a>表单输入绑定<code>v-model</code></h3><ul><li><p><code>v-model</code>指令可以用在表单元素<code>&lt;input&gt; &lt;textarea&gt; &lt;select&gt;</code>上创建双向数据绑定，它会根据控件类型自动选取正确方法来更新元素，（注：会忽略所有表单元素的value, checked, selected特性的初始值，将Vue实例的数据作为数据来源）</p></li><li><p><code>v-model</code>其实是语法糖，本质上是包含两个操作：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br><span class="line">相当于</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-bind:value</span>=<span class="string">"message"</span> <span class="attr">v-on:input</span>=<span class="string">"message = $event.target.value"</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p><code>v-model  -- checkbox</code></p><p>单个复选框时，<code>v-model</code>为布尔值，此时<code>input</code>的<code>value</code>并不影响<code>v-model</code>的值；</p><img src="/2019/11/21/Vue%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/v-model-checkbox1.png" alt="v-model:单个复选框" style="zoom:80%;"><p>多个复选框时，可以选中多个，所以对应<code>data</code>中属性是一个数组，当选中时就会将相应的<code>input</code>中的<code>value</code>添加到数组中；</p></li><li><p><code>v-model --select</code></p><p>单选时，<code>v-model</code>绑定的是一个值，会将对应的value赋值到绑定对象中</p><p>多选时，<code>v-mode</code>l绑定的是一个数组，选中多个值时会将选中的<code>option</code>对应的<code>value</code>添加到绑定的数组中</p><img src="/2019/11/21/Vue%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/v-model-select.png" style="zoom:80%;"></li><li><p>修饰符</p><ul><li><code>.lazy</code>让数据在失去焦点或回车时才会进行更新</li><li><code>.number</code>默认输入框都会被当做字符串处理，让输入框的内容自动转换为数字类型</li><li><code>.trim</code>：去除输入数据两端的空格</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ES6-let,const</title>
       <link href="/2019/11/20/ES6-let-const/"/>
       <url>/2019/11/20/ES6-let-const/</url>
